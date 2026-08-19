@@ -1,0 +1,27 @@
+# Virtual environments
+venv/
+venv_tf/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+
+# Environment variables
+.env
+
+# Logs
+logs/
+*.log
+
+# Generated outputs
+outputs/
+
+# Datasets
+dataset/
+
+# Jupyter
+.ipynb_checkpoints/
