@@ -72,7 +72,18 @@ To evaluate the models on your hold-out test set, use `evaluate.py`. This proced
 python evaluate.py --model all
 ```
 
-This will log the detailed Multi-Class Classification Reports and export Confusion Matrices into the `outputs/` directory.
+This will log the detailed Multi-Class Classification Reports and export a complete graphical evaluation package into the `outputs/` directory for each model:
+
+- Training accuracy/loss curves
+- Raw-count and normalized confusion matrices
+- Per-class precision, recall, and F1-score bar chart
+- One-vs-rest ROC curves with AUC values
+- Precision-recall curves with average precision values
+- Correct-versus-incorrect confidence histogram and test-set class distribution
+- `*_metrics.json` with the numerical report and summary scores
+- `*_predictions.csv` with true labels, predicted labels, confidence, and every class probability
+
+The charts are generated automatically whenever `evaluate.py` runs, so they can be inserted directly into a report or presentation.
 
 ---
 

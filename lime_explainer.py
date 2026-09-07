@@ -3,7 +3,7 @@ from lime import lime_image
 from skimage.segmentation import mark_boundaries
 import matplotlib.pyplot as plt
 
-def explain_with_lime(model, image, num_classes=2, top_labels=1, hide_color=0, num_samples=1000):
+def explain_with_lime(model, image, num_classes=2, top_labels=1, hide_color=0, num_samples=250):
     """
     Generate LIME explanation for an image classification.
     
@@ -20,7 +20,11 @@ def explain_with_lime(model, image, num_classes=2, top_labels=1, hide_color=0, n
     
     # Needs to process batched inputs so we wrap predicting function
     def predict_fn(images):
-        return model.predict(images)
+        preds = model.predict(images, verbose=0)
+        # For binary sigmoid output (shape (N, 1)), expand to 2-class probabilities (N, 2)
+        if preds.ndim == 2 and preds.shape[1] == 1:
+            return np.hstack([1.0 - preds, preds])
+        return preds
 
     explanation = explainer.explain_instance(
         image.astype('double'), 

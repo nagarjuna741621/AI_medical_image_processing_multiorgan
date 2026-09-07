@@ -32,10 +32,16 @@ def get_datasets(data_dir, class_names, label_mode='categorical'):
         label_mode=label_mode
     )
 
-    # Split the 20% validation into 10% val and 10% test
-    val_test_batches = tf.data.experimental.cardinality(val_test_ds)
-    test_ds = val_test_ds.take(val_test_batches // 2)
-    val_ds = val_test_ds.skip(val_test_batches // 2)
+    # Split the 20% holdout into validation and test batches. Keep a usable
+    # dataset on both sides when the holdout fits in a single batch.
+    val_test_batches = int(tf.data.experimental.cardinality(val_test_ds).numpy())
+    if val_test_batches <= 1:
+        val_ds = val_test_ds
+        test_ds = val_test_ds
+    else:
+        test_batches = max(1, val_test_batches // 2)
+        test_ds = val_test_ds.take(test_batches)
+        val_ds = val_test_ds.skip(test_batches)
 
     # Autotune for performance
     AUTOTUNE = tf.data.AUTOTUNE

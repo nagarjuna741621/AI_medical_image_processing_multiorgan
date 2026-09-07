@@ -22,8 +22,12 @@ def explain_with_shap(model, image, background_images=None, output_path=None):
     # We must pass wrapped image in batch dimension
     img_batch = np.expand_dims(image, axis=0)
     
-    # explainer.shap_values returns a list for each class
-    shap_values, indexes = explainer.shap_values(img_batch, ranked_outputs=1)
+    # explainer.shap_values returns a list/tuple for each class or ranked outputs
+    res = explainer.shap_values(img_batch, ranked_outputs=1)
+    if isinstance(res, tuple) and len(res) == 2:
+        shap_values, indexes = res
+    else:
+        shap_values = res
     
     # Depending on SHAP version, shap_values might be a list of arrays or array
     if isinstance(shap_values, list):

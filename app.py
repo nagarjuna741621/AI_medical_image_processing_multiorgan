@@ -75,7 +75,7 @@ st.markdown("---")
 
 # Sidebar
 with st.sidebar:
-    st.image("https://cdn-icons-png.flaticon.com/512/3063/3063206.png", width=100)
+    st.markdown("<div style='font-size: 3rem; text-align: center;'>⚕️</div>", unsafe_allow_html=True)
     st.header("Diagnostic Settings")
     model_selection = st.radio(
         "Select Imaging Modality",
@@ -97,7 +97,7 @@ with col1:
     if uploaded_file is not None:
         # Display uploaded image
         image = Image.open(uploaded_file)
-        st.image(image, caption="Uploaded Image", use_column_width=True)
+        st.image(image, caption="Uploaded Image", use_container_width=True)
 
 with col2:
     if uploaded_file is not None:
@@ -129,14 +129,14 @@ with col2:
                 
                 # 4. Generate Explanations
                 with st.spinner("Generating Grad-CAM, LIME, and SHAP visualizations..."):
-                    gradcam_img, lime_img, shap_fig = get_xai_explanations(img_array, model, uploaded_file, model_type)
+                    gradcam_img, lime_img, shap_fig = get_xai_explanations(img_array, model, uploaded_file, model_type, pred_idx)
                 
                 # 5. Show Explanations in tabs
                 tab1, tab2, tab3 = st.tabs(["Grad-CAM", "LIME", "SHAP"])
                 
                 with tab1:
                     st.write("**Gradient-weighted Class Activation Mapping** highlights the spatial regions in the image most responsible for the network's decision.")
-                    st.image(gradcam_img, caption="Grad-CAM Heatmap", use_column_width=True)
+                    st.image(gradcam_img, caption="Grad-CAM Heatmap", use_container_width=True)
                     
                 with tab2:
                     st.write("**Local Interpretable Model-agnostic Explanations** highlights superpixels contributing positively to the model's prediction.")

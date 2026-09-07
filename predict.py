@@ -88,11 +88,16 @@ def process_prediction(img_array, model_type):
         
     return class_name, confidence, pred_idx, model
 
-def get_xai_explanations(img_array, model, img_path_or_file, model_type):
+def get_xai_explanations(img_array, model, img_path_or_file, model_type, pred_idx=None):
     log.info("Generating Grad-CAM...")
     # Finding last conv layer dynamically might fail if naming varies, we fallback if needed.
     # We will use the fact that last layer in EfficientNetB0 is 'top_activation'
-    heatmap = make_gradcam_heatmap(img_batch:=np.expand_dims(img_array, axis=0), model, 'top_activation')
+    heatmap = make_gradcam_heatmap(
+        np.expand_dims(img_array, axis=0), 
+        model, 
+        'top_activation',
+        pred_index=pred_idx
+    )
     
     # We need a temporary path if img_path_or_file is a file buffer (Streamlit)
     if not isinstance(img_path_or_file, str):

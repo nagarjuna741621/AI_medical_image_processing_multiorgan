@@ -46,7 +46,12 @@ def make_gradcam_heatmap(img_array, model, last_conv_layer_name, pred_index=None
             # pass the image through layers up to base_model.
             x = img_array
             for layer in model.layers[:base_model_idx]:
-                x = layer(x, training=False)
+                if isinstance(layer, tf.keras.layers.InputLayer):
+                    continue
+                try:
+                    x = layer(x, training=False)
+                except TypeError:
+                    x = layer(x)
             
             # Now pass x through the nested base model up to last conv layer
             last_conv_layer_output = last_conv_model(x)
@@ -54,35 +59,30 @@ def make_gradcam_heatmap(img_array, model, last_conv_layer_name, pred_index=None
             
             # Now compute predictions from the last conv layer output
             preds = classifier_model(last_conv_layer_output)
-            if pred_index is None:
-                # If binary, it's 0. If categorical, argmax.
-                if preds.shape[-1] == 1:
-                    pred_index = 0
-                else:
-                    pred_index = tf.argmax(preds[0])
-                    
             if preds.shape[-1] == 1:
-                class_channel = preds[0, 0]
+                if pred_index is None:
+                    pred_index = 1 if float(preds[0, 0]) > 0.5 else 0
+                class_channel = preds[0, 0] if pred_index == 1 else (1.0 - preds[0, 0])
             else:
+                if pred_index is None:
+                    pred_index = int(tf.argmax(preds[0]))
                 class_channel = preds[:, pred_index]
 
     else:
         # Standard flat model Grad-CAM
         grad_model = tf.keras.models.Model(
-            [model.inputs], [model.get_layer(last_conv_layer_name).output, model.output]
+            model.inputs, [model.get_layer(last_conv_layer_name).output, model.output]
         )
 
         with tf.GradientTape() as tape:
             last_conv_layer_output, preds = grad_model(img_array)
-            if pred_index is None:
-                if preds.shape[-1] == 1:
-                    pred_index = 0
-                else:
-                    pred_index = tf.argmax(preds[0])
-                    
             if preds.shape[-1] == 1:
-                class_channel = preds[0, 0]
+                if pred_index is None:
+                    pred_index = 1 if float(preds[0, 0]) > 0.5 else 0
+                class_channel = preds[0, 0] if pred_index == 1 else (1.0 - preds[0, 0])
             else:
+                if pred_index is None:
+                    pred_index = int(tf.argmax(preds[0]))
                 class_channel = preds[:, pred_index]
 
     gradients = tape.gradient(class_channel, last_conv_layer_output)
