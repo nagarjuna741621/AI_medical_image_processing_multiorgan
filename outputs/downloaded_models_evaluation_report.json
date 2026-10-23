@@ -1,0 +1,219 @@
+{
+  "timestamp": "2026-09-15 11:19:50",
+  "chest_models": [
+    {
+      "model_name": "DenseNet-121 (CheXNet)",
+      "model_path": "/home/faith/folder/AI_medical_image_processing_multiorgan/models/densenet121_chest_model.keras",
+      "file_size_mb": 36.29,
+      "parameters": 7305795,
+      "accuracy": 0.9375,
+      "precision": 0.9234,
+      "recall": 0.9416,
+      "f1_score": 0.9307,
+      "roc_auc": 0.9922,
+      "latency_ms": 72.96,
+      "confusion_matrix": [
+        [
+          67,
+          3,
+          1
+        ],
+        [
+          14,
+          197,
+          0
+        ],
+        [
+          1,
+          1,
+          36
+        ]
+      ],
+      "samples_evaluated": 320
+    },
+    {
+      "model_name": "CoAtNet (Hybrid)",
+      "model_path": "/home/faith/folder/AI_medical_image_processing_multiorgan/models/coatnet_chest_model.keras",
+      "file_size_mb": 11.23,
+      "parameters": 967267,
+      "accuracy": 0.8969,
+      "precision": 0.896,
+      "recall": 0.8611,
+      "f1_score": 0.8772,
+      "roc_auc": 0.9804,
+      "latency_ms": 25.25,
+      "confusion_matrix": [
+        [
+          53,
+          14,
+          0
+        ],
+        [
+          12,
+          199,
+          1
+        ],
+        [
+          1,
+          5,
+          35
+        ]
+      ],
+      "samples_evaluated": 320
+    },
+    {
+      "model_name": "MobileViT (Edge Hybrid)",
+      "model_path": "/home/faith/folder/AI_medical_image_processing_multiorgan/models/mobilevit_chest_model.keras",
+      "file_size_mb": 10.78,
+      "parameters": 924579,
+      "accuracy": 0.9062,
+      "precision": 0.9214,
+      "recall": 0.8656,
+      "f1_score": 0.8902,
+      "roc_auc": 0.9833,
+      "latency_ms": 19.89,
+      "confusion_matrix": [
+        [
+          64,
+          14,
+          0
+        ],
+        [
+          9,
+          194,
+          0
+        ],
+        [
+          2,
+          5,
+          32
+        ]
+      ],
+      "samples_evaluated": 320
+    },
+    {
+      "model_name": "Original Model (CNN - EfficientNetB0)",
+      "model_path": "/home/faith/folder/AI_medical_image_processing_multiorgan/models/chest_model.keras",
+      "file_size_mb": 18.21,
+      "parameters": 4219558,
+      "accuracy": 0.9,
+      "precision": 0.9089,
+      "recall": 0.8663,
+      "f1_score": 0.8845,
+      "roc_auc": 0.9756,
+      "latency_ms": 39.53,
+      "confusion_matrix": [
+        [
+          60,
+          11,
+          0
+        ],
+        [
+          14,
+          196,
+          0
+        ],
+        [
+          0,
+          7,
+          32
+        ]
+      ],
+      "samples_evaluated": 320
+    }
+  ],
+  "brain_models": [
+    {
+      "model_name": "DenseNet-121",
+      "model_path": "/home/faith/folder/AI_medical_image_processing_multiorgan/models/densenet121_brain_model.keras",
+      "file_size_mb": 31.37,
+      "parameters": 7305281,
+      "accuracy": 0.84,
+      "precision": 0.825,
+      "recall": 0.8385,
+      "f1_score": 0.8302,
+      "roc_auc": 0.9201,
+      "latency_ms": 223.72,
+      "confusion_matrix": [
+        [
+          15,
+          3
+        ],
+        [
+          5,
+          27
+        ]
+      ],
+      "samples_evaluated": 50
+    },
+    {
+      "model_name": "CoAtNet (Hybrid)",
+      "model_path": "/home/faith/folder/AI_medical_image_processing_multiorgan/models/coatnet_brain_model.keras",
+      "file_size_mb": 11.23,
+      "parameters": 967009,
+      "accuracy": 0.64,
+      "precision": 0.32,
+      "recall": 0.5,
+      "f1_score": 0.3902,
+      "roc_auc": 0.7951,
+      "latency_ms": 78.68,
+      "confusion_matrix": [
+        [
+          0,
+          18
+        ],
+        [
+          0,
+          32
+        ]
+      ],
+      "samples_evaluated": 50
+    },
+    {
+      "model_name": "MobileViT (Edge Hybrid)",
+      "model_path": "/home/faith/folder/AI_medical_image_processing_multiorgan/models/mobilevit_brain_model.keras",
+      "file_size_mb": 10.77,
+      "parameters": 924321,
+      "accuracy": 0.64,
+      "precision": 0.32,
+      "recall": 0.5,
+      "f1_score": 0.3902,
+      "roc_auc": 0.2865,
+      "latency_ms": 51.13,
+      "confusion_matrix": [
+        [
+          0,
+          18
+        ],
+        [
+          0,
+          32
+        ]
+      ],
+      "samples_evaluated": 50
+    },
+    {
+      "model_name": "Original Model (CNN - EfficientNetB0)",
+      "model_path": "/home/faith/folder/AI_medical_image_processing_multiorgan/models/brain_model.keras",
+      "file_size_mb": 47.05,
+      "parameters": 4055972,
+      "accuracy": 0.82,
+      "precision": 0.82,
+      "recall": 0.8472,
+      "f1_score": 0.8164,
+      "roc_auc": 0.9375,
+      "latency_ms": 130.02,
+      "confusion_matrix": [
+        [
+          17,
+          1
+        ],
+        [
+          8,
+          24
+        ]
+      ],
+      "samples_evaluated": 50
+    }
+  ]
+}

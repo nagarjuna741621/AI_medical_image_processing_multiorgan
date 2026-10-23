@@ -1,5 +1,5 @@
 # Conda Environment Configuration
-# Use this to bypass local python version constraints and lock dependencies specifically to Python 3.10
+# Use this to lock dependencies cleanly to Python 3.10
 name: medical_ai_env
 channels:
   - conda-forge
@@ -9,13 +9,16 @@ dependencies:
   - pip
   - pip:
     - tensorflow>=2.10.0
-    - numpy
-    - pandas
-    - scikit-learn
-    - opencv-python
-    - matplotlib
-    - Pillow
-    - streamlit
-    - lime
-    - shap
-    - kagglehub
+    - tf-keras>=2.15.0
+    - numpy>=1.22.0
+    - pandas>=1.4.0
+    - scikit-learn>=1.1.0
+    - scikit-image>=0.19.0
+    - opencv-python>=4.7.0
+    - matplotlib>=3.6.0
+    - seaborn>=0.12.0
+    - Pillow>=9.2.0
+    - streamlit>=1.24.0
+    - lime>=0.2.0
+    - shap>=0.41.0
+    - kagglehub>=0.2.0

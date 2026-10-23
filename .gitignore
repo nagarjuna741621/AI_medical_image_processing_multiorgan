@@ -1,27 +1,107 @@
-# Virtual environments
+# ==============================================================================
+# Git Ignore Configuration - AI Medical Image Processing (Multi-Organ)
+# ==============================================================================
+
+# Virtual Environments
 venv/
 venv_tf/
+.venv/
+env/
+ENV/
+env.bak/
+venv.bak/
 
-# Python cache
+# Python Bytecode & Cache
 __pycache__/
-*.pyc
-*.pyo
+*.py[cod]
+*$py.class
+*.so
+.Python
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# macOS
+# Unit Testing & Coverage
+.cache
+.pytest_cache/
+.coverage
+.coverage.*
+.tox/
+.nox/
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+
+# Jupyter Notebooks & Checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*.ipynb_checkpoints
+
+# Operating System & Filesystem Artifacts
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 
-# Environment variables
-.env
+# Windows Alternate Data Streams (NTFS Zone Identifiers)
+*:Zone.Identifier
+*Zone.Identifier*
+*:Zone.Identifier:$DATA
 
-# Logs
+# IDEs and Code Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+
+# Medical Datasets (Large Data Files)
+dataset/
+dataset/*/
+*.dcm
+*.nii
+*.nii.gz
+
+# Archive Files & Staging Directories
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.rar
+*.7z
+export_staging/
+staging/
+benchmark_staging/
+coatnet_artifacts/
+densenet121_artifacts/
+mobilevit_artifacts/
+models-20260901T035833Z-1-001/
+
+# Runtime Logs
 logs/
 *.log
 
-# Generated outputs
-outputs/
-
-# Datasets
-dataset/
-
-# Jupyter
-.ipynb_checkpoints/
+# Sensitive Configs & Keys
+.env
+.env.*
+secrets.json
+kaggle.json

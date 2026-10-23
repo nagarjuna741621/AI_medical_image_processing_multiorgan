@@ -1,0 +1,48 @@
+{
+  "model_name": "Brain_Model",
+  "accuracy": 0.8125,
+  "weighted_f1": 0.8139880952380952,
+  "macro_f1": 0.8095238095238095,
+  "macro_precision": 0.807843137254902,
+  "macro_recall": 0.8178137651821862,
+  "roc_auc_macro": 0.9271255060728745,
+  "average_precision_macro": 0.9323110488979753,
+  "mean_confidence": 0.6797947464510798,
+  "confusion_matrix": [
+    [
+      11,
+      2
+    ],
+    [
+      4,
+      15
+    ]
+  ],
+  "classification_report": {
+    "NORMAL": {
+      "precision": 0.7333333333333333,
+      "recall": 0.8461538461538461,
+      "f1-score": 0.7857142857142857,
+      "support": 13.0
+    },
+    "TUMOR": {
+      "precision": 0.8823529411764706,
+      "recall": 0.7894736842105263,
+      "f1-score": 0.8333333333333334,
+      "support": 19.0
+    },
+    "accuracy": 0.8125,
+    "macro avg": {
+      "precision": 0.807843137254902,
+      "recall": 0.8178137651821862,
+      "f1-score": 0.8095238095238095,
+      "support": 32.0
+    },
+    "weighted avg": {
+      "precision": 0.821813725490196,
+      "recall": 0.8125,
+      "f1-score": 0.8139880952380952,
+      "support": 32.0
+    }
+  }
+}
